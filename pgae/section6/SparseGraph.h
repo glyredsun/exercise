@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <list>
+#include <queue>
 #include "Enumerator.h"
 template <typename node_type, typename edge_type>
 class SparseGraph
@@ -21,6 +22,7 @@ public:
 	}
 	EdgeEnumerator getEdgeEnumerator(int index) { return EdgeEnumerator(mEdgeLists[index]); }
 private:
+	
 	bool mIsDigraph;
 	NodeVector mNodes;
 	std::vector<EdgeList> mEdgeLists;
