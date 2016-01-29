@@ -25,6 +25,6 @@ int main()
 			std::cout << "n + m + num = " << n + m + num << std::endl;
 		}, std::placeholders::_1, 2);
 	f3(11);
-
+	getchar();
 	return 0;
 }

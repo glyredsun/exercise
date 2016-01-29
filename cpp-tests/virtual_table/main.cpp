@@ -48,6 +48,6 @@ int main(void)
 		}
 		cout << "}" << endl;
 	}
-	
+	getchar();
 	return EXIT_SUCCESS;
 }
