@@ -22,7 +22,7 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 	{
 	case GLFW_KEY_ESCAPE:
 	{
-		glfwSetWindowShouldClose(window, GLFW_TRUE);
+		glfwSetWindowShouldClose(window, GL_TRUE);
 		break;
 	}
 	default:
