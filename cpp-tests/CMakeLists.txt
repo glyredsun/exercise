@@ -14,3 +14,9 @@ operator_overload_srcs
 )
 include_directories(operator_overload)
 add_executable(operator_overload ${operator_overload_srcs})
+
+set(
+lambda_srcs
+	lambda/main.cpp
+)
+add_executable(lambda ${lambda_srcs})

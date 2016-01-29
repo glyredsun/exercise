@@ -34,15 +34,17 @@ int main(void)
 	void ** vtable1 = *((void ***)&c1);
 	void ** vtable2 = *((void ***)&c2);
 	void ** vtable3 = *((void ***)&c3);
-	void ** vtables[] = {vtable1, vtable2, vtable3};
-	for each (void** vtable in vtables)
+	struct VTInfo {
+		void ** ptr;
+		int size;
+	} vtInfos[] = { { vtable1, 5 }, { vtable2 , 5 }, { vtable3, 6 } };
+	for each (VTInfo info in vtInfos)
 	{
-		cout << "vtable " << vtable << " = {";
-		for (int i = 0; ; i++)
+		cout << "vtable " << info.ptr << " = {";
+		for (int i = 0; i < info.size; i++)
 		{
-			if (vtable[i] == nullptr) break;
 			if (i != 0) cout << ", ";
-			cout << vtable[i];
+			cout << info.ptr[i];
 		}
 		cout << "}" << endl;
 	}
