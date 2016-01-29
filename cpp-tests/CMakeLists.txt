@@ -1,17 +1,16 @@
 project(cpp-test)
 
 set(
-vptrtest_srcs
-	vptrtest/main.cpp
+virtual_table_srcs
+	virtual_table/main.cpp
 )
-
-add_executable(vptrtest ${vptrtest_srcs})
+add_executable(virtual_table ${virtual_table_srcs})
 
 set(
-operator_test_srcs
-	operator_test/Fraction.cpp
-	operator_test/Fraction.h
-	operator_test/main.cpp
+operator_overload_srcs
+	operator_overload/Fraction.cpp
+	operator_overload/Fraction.h
+	operator_overload/main.cpp
 )
-include_directories(operator_test)
-add_executable(operator_test ${operator_test_srcs})
+include_directories(operator_overload)
+add_executable(operator_overload ${operator_overload_srcs})
