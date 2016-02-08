@@ -1,22 +1,9 @@
 project(cpp-test)
 
-set(
-virtual_table_srcs
-	virtual_table/main.cpp
-)
-add_executable(virtual_table ${virtual_table_srcs})
+include(lambda/CMakeLists.txt)
+include(operator_overload/CMakeLists.txt)
+include(virtual_table/CMakeLists.txt)
 
-set(
-operator_overload_srcs
-	operator_overload/Fraction.cpp
-	operator_overload/Fraction.h
-	operator_overload/main.cpp
-)
-include_directories(operator_overload)
-add_executable(operator_overload ${operator_overload_srcs})
-
-set(
-lambda_srcs
-	lambda/main.cpp
-)
-add_executable(lambda ${lambda_srcs})
+add_executable(lambda ${lambda_test_src})
+add_executable(operator_overload ${operator_overload_test_src})
+add_executable(virtual_table ${virtual_table_test_src})
