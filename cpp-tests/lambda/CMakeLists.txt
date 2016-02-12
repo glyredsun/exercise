@@ -1,4 +1,6 @@
 
 set(lambda_test_src
-lambda/lambda_test.cpp
+lambda_test.cpp
 )
+
+add_executable(lambda ${lambda_test_src})
