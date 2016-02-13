@@ -1,0 +1,1 @@
+add_executable(call_once call_once_test.cpp)

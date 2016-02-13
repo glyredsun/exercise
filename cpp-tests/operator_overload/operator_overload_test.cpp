@@ -10,6 +10,6 @@ int main(void)
 	cout << f << endl;
 	Fraction f2(3, 4);
 	assert(f != f2);
-	getchar();
+	system("pause");
 	return EXIT_SUCCESS;
 }
