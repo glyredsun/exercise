@@ -1,0 +1,1 @@
+add_executable(object object_test.cpp)
