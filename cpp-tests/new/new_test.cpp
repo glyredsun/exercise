@@ -11,20 +11,27 @@ class MyClass
 public:
 	MyClass() 
 	{
-		SHOW_FUNC
+		SHOW_FUNC;
 	}
 
 	~MyClass()
 	{
-		SHOW_FUNC
+		SHOW_FUNC;
 	}
 
 	void* operator new(size_t size)
 	{
-		SHOW_FUNC
+		SHOW_FUNC;
 		return ::operator new(size);
 	}
 
+	void func()
+	{
+		SHOW_FUNC;
+		printf("n is %d\n", n);
+	}
+
+private:
 	int n{0};
 };
 
@@ -32,14 +39,16 @@ int main(void)
 {
 	SHOW_LINE;
 	MyClass *p1 = ::new MyClass;
-	printf("p1->n is %d\n", p1->n);
+	p1->func();
 	delete p1;
 	SHOW_LINE;
 
 	void *p2 = malloc(sizeof(MyClass));
-	printf("p2->n before placement new %d\n", static_cast<MyClass*>(p2)->n);
+	printf("before placement new\n");
+	static_cast<MyClass*>(p2)->func();
 	::new(p2) MyClass;
-	printf("p2->n after placement new %d\n", static_cast<MyClass*>(p2)->n);
+	printf("after placement new\n");
+	static_cast<MyClass*>(p2)->func();
 	static_cast<MyClass*>(p2)->~MyClass();
 	free(p2);
 
