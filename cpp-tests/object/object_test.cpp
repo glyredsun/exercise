@@ -123,7 +123,7 @@ int main(void)
 		std::cout << "begin loop3" << std::endl;
 		for each (const A& a in v)
 		{
-			DerivedA da = a;
+			DerivedA da = a; // call the copy constructor
 		}
 		std::cout << "end loop3" << std::endl;
 
