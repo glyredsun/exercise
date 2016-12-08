@@ -137,26 +137,33 @@ int main(void)
 	glShaderSource(vertex_shader, 1, &vertex_shader_code, nullptr);
 	glCompileShader(vertex_shader);
 	glGetShaderiv(vertex_shader, GL_INFO_LOG_LENGTH, &logLen);
-	logBuf.resize(logLen);
-	glGetShaderInfoLog(vertex_shader, logLen, nullptr, logBuf.data());
-	std::cerr << "vertex shader info log : " << std::endl << logBuf.data() << std::endl;
+	if (logLen) {
+		logBuf.resize(logLen);
+		glGetShaderInfoLog(vertex_shader, logLen, nullptr, logBuf.data());
+		std::cerr << "vertex shader info log : " << std::endl << logBuf.data() << std::endl;
+	}
 
 	GLuint fragment_shader = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fragment_shader, 1, &fragment_shader_code, nullptr);
 	glCompileShader(fragment_shader);
 	glGetShaderiv(fragment_shader, GL_INFO_LOG_LENGTH, &logLen);
-	logBuf.resize(logLen);
-	glGetShaderInfoLog(fragment_shader, logLen, nullptr, logBuf.data());
-	std::cerr << "fragment shader info log : " << std::endl << logBuf.data() << std::endl;
+	if (logLen) {
+		logBuf.resize(logLen);
+		glGetShaderInfoLog(fragment_shader, logLen, nullptr, logBuf.data());
+		std::cerr << "fragment shader info log : " << std::endl << logBuf.data() << std::endl;
+	}
+	
 
 	GLuint program = glCreateProgram();
 	glAttachShader(program, vertex_shader);
 	glAttachShader(program, fragment_shader);
 	glLinkProgram(program);
 	glGetProgramiv(program, GL_INFO_LOG_LENGTH, &logLen);
-	logBuf.resize(logLen);
-	glGetProgramInfoLog(program, logLen, nullptr, logBuf.data());
-	std::cerr << "program info log : " << std::endl << logBuf.data() << std::endl;
+	if (logLen) {
+		logBuf.resize(logLen);
+		glGetProgramInfoLog(program, logLen, nullptr, logBuf.data());
+		std::cerr << "program info log : " << std::endl << logBuf.data() << std::endl;
+	}
 	glDetachShader(program, vertex_shader);
 	glDetachShader(program, fragment_shader);
 	glDeleteShader(vertex_shader);
@@ -299,8 +306,8 @@ int main(void)
 
 		glm::mat4 view = glm::lookAt(eyePos, eyePos + direction, glm::cross(right, direction));
 		glm::mat4 model;
-		//model = glm::scale(model, glm::vec3(1.0f + cosf(static_cast<float>(glfwGetTime()))));
-		//model = glm::rotate(model, static_cast<float>(glfwGetTime()), glm::vec3(1.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f + cosf(static_cast<float>(glfwGetTime()))));
+		model = glm::rotate(model, static_cast<float>(glfwGetTime()), glm::vec3(1.0f, 1.0f, 0.0f));
 		glm::mat4 mvp = projection * view * model;
 
 		glUniformMatrix4fv(mvpID, 1, GL_FALSE, glm::value_ptr(mvp));
