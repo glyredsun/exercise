@@ -1,0 +1,1 @@
+add_executable(thread_join thread_join_test.cpp)
